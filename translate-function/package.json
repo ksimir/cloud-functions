@@ -1,0 +1,7 @@
+{ "name": "cloud-translate-test",
+  "description": "testing cloud functions + cloud translation API",
+  "version": "0.0.1",
+  "dependencies": {
+    "google-cloud": "0.50.0"
+  }
+}
