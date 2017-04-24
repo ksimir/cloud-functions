@@ -1,7 +1,7 @@
 /**
- * Cloud Functions Sample to call Cloud Transaltion API
+ * Cloud Functions Sample to call Cloud Transaltion API and be called from api.ai
  * Responds to any HTTP request that can provide a "message" and "language" field in the body.
- * Only translate to french.
+ * Only translate to french. 
  * Author: Samir Hammoudi
  *
  * @param {!Object} req Cloud Function request context.
