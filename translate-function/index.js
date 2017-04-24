@@ -23,17 +23,20 @@ exports.translatetext = function translatetext(req, res) {
 		console.log("No message to translate");
 		res.status(400).send('No message defined!');
 	} else {
-		// Everything is okay.
+		// verify that the target language is french
 		if (req.body.result.parameters.language == 'french' || req.body.result.parameters.language == 'French'){
 			console.log("French");
+			// Excute the translation to french
 			translate.translate(req.body.result.parameters.message, 'fr', function(err, translation) {
 				if (!err) {
 					console.log(translation);
+					// return a JSON response containing the translation
 					res.json({ "speech": translation, "displayText": translation, "source": "cloud-function-translate" });
 				}
 			});
 		} else {
 			console.log("Not supported language");
+			// return a JSON response with the original message since the language is not supported
 			res.json({ "speech": req.body.result.parameters.message, "displayText": req.body.result.parameters.message, "source": "cloud-function-translate" });
 		}
 	}
