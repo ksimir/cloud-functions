@@ -24,7 +24,7 @@ exports.translatetext = function translatetext(req, res) {
 		res.status(400).send('No message defined!');
 	} else {
 		// verify that the target language is french
-		if (req.body.result.parameters.language == 'french' || req.body.result.parameters.language == 'French'){
+		if (req.body.result.parameters.language == 'French'){
 			console.log("French");
 			// Excute the translation to french
 			translate.translate(req.body.result.parameters.message, 'fr', function(err, translation) {
