@@ -1,18 +1,19 @@
 /**
- * Cloud Functions Sample to call Cloud Transaltion API and be called from api.ai
+ * Cloud Functions Sample to call Cloud Transaltion API
  * Responds to any HTTP request that can provide a "message" and "language" field in the body.
- * Only translate to french. 
+ * Only translate to french.
  * Author: Samir Hammoudi
  *
  * @param {!Object} req Cloud Function request context.
  * @param {!Object} res Cloud Function response context.
  */
- 
-// Replace the <key> here with you service account API key generated in GCP console 
 var gcloud = require('google-cloud')({
   projectId: process.env.GCP_PROJECT,
-  key: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+  key: 'AIzaSyCEv9ZSyvthuM8MeiP8bzN6_2D3rCyu470'
 });
+
+// Require and start in the startup of your application: 
+require('@google-cloud/debug-agent').start({ allowExpressions: true });
 
 var translate = gcloud.translate();
 
@@ -24,7 +25,7 @@ exports.translatetext = function translatetext(req, res) {
 		res.status(400).send('No message defined!');
 	} else {
 		// verify that the target language is french
-		if (req.body.result.parameters.language == 'French'){
+		if (req.body.result.parameters.language == 'french' || req.body.result.parameters.language == 'French'){
 			console.log("French");
 			// Excute the translation to french
 			translate.translate(req.body.result.parameters.message, 'fr', function(err, translation) {
