@@ -7,10 +7,7 @@
  * @param {!Object} req Cloud Function request context.
  * @param {!Object} res Cloud Function response context.
  */
-var gcloud = require('google-cloud')({
-  projectId: process.env.GCP_PROJECT,
-  key: 'AIzaSyCEv9ZSyvthuM8MeiP8bzN6_2D3rCyu470'
-});
+var gcloud = require('google-cloud');
 
 // Require and start in the startup of your application: 
 require('@google-cloud/debug-agent').start({ allowExpressions: true });
